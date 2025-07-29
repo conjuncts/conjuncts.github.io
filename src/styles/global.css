@@ -31,7 +31,7 @@
 	font-display: swap;
 }
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: Georgia, serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -99,11 +99,29 @@ input {
 }
 table {
 	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid rgb(var(--gray));
+	line-height: 1.4;
+}
+
+table th,
+table td {
+	border: 1px solid rgb(var(--gray));
+	padding: 6px 8px;
+	text-align: left;
+}
+
+table th {
+	background-color: rgb(var(--gray-light));
+	font-weight: bold;
 }
 img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
+}
+img.github-shield {
+	border-radius: 0px;
 }
 code {
 	padding: 2px 5px;
@@ -111,11 +129,15 @@ code {
 	border-radius: 2px;
 }
 pre {
-	padding: 1.5em;
+	padding: 1em;
 	border-radius: 8px;
+	font-size: 0.85em;
+	line-height: 1.4;
 }
 pre > code {
 	all: unset;
+	background: none;
+	padding: 0;
 }
 blockquote {
 	border-left: 4px solid var(--accent);

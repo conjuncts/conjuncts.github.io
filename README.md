@@ -1,3 +1,20 @@
+# My blog
+
+Blog with astro.
+
+https://docs.astro.build/en/tutorial/1-setup/1/
+
+
+I like astro because:
+- uses javascript instead of ruby (jekyll) or go (hugo): more familiar
+- https://docs.astro.build/en/guides/images/
+
+Resources:
+- https://github.com/remarkjs/remark-math
+- https://web.archive.org/web/20240226020259/https://ileumas.com/writing/2022/03/astro-math-katex/
+- https://github.com/satnaing/astro-paper
+- https://github.com/Charca/astro-blog-template
+
 # Astro Starter Kit: Blog
 
 ```sh
