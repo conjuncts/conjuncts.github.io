@@ -10,6 +10,7 @@ I like astro because:
 - https://docs.astro.build/en/guides/images/
 
 Resources:
+- https://docs.astro.build/en/guides/deploy/github/
 - https://github.com/remarkjs/remark-math
 - https://web.archive.org/web/20240226020259/https://ileumas.com/writing/2022/03/astro-math-katex/
 - https://github.com/satnaing/astro-paper
