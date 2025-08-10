@@ -2,7 +2,8 @@
 title: 'Flattening JSON'
 description: 'flattening JSON in polars'
 pubDate: 'Jul 29 2025'
-heroImage: '../../assets/blog-placeholder-4.jpg'
+# heroImage: '../../assets/blog-placeholder-4.jpg'
+tags: ["polars", "data"]
 ---
 
 I recently encountered a super useful pattern for flattening JSON in dataframes. Sometimes, I'm faced with truly chaotic JSON data -- nested data that does not follow any schema whatsoever, or with so many deviations that creating a fully comprehensive schema is impossible. Examples include LLM output and user-generated data dumps.
