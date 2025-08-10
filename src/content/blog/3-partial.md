@@ -170,7 +170,7 @@ Where does $V$ go? Why doesn't $P$ become a function of all of $T$, $S$, $V$?
 Intuitive answer: by the state postulate, $P$ **cannot be** a function of those 3 variables - because then it would be **overconstrained**. Then, for arbitrary 3 variables, you can't expect that point to stay on a 2D manifold. I hope you see how critical the state postulate is!
 
 
-## S5. Proving the Triple Product Identity
+## S5. Proving the Triple Product Rule
 
 I now prove the identities in the language of multivariable calculus.
 
@@ -469,4 +469,24 @@ My biggest gripe is that thermodynamics makes some huge assumptions that often g
 Here, I resolve my doubts using explicit parametrizations -- and assume that everything is interdependent and invertible. But this is quite restrictive. Perhaps an implicit approach makes more sense and is more powerful. I still haven't fully resolved these assumptions with edge cases / when they go wrong. 
 
 I believe the way to go is the [Implicit Function Theorem](https://en.wikipedia.org/wiki/Implicit_function_theorem), which connects an implicit relation with local parametrizations, fixing proofs when no global parametrization exists. However, I perhaps need to take Differential Topology or Geometry to grasp the nuances of this.
+
+## Further Reading
+
+- Triple product rule (AKA cyclic chain rule)
+    - Math SE -- [proof with Implicit Function Theorem](https://math.stackexchange.com/a/3452693/1537176)
+    - Math SE (Shifrin) -- [another proof](https://math.stackexchange.com/questions/3509203/why-is-the-cyclic-relation-of-partial-derivatives-correct)
+    - Math SE (Shifrin) -- [further discussion](https://math.stackexchange.com/questions/2282799/where-does-the-relative-sign-come-from-in-this-chain-rule-application/2282804#2282804)
+    - Math SE -- [further discussion](https://math.stackexchange.com/questions/4352876/clarification-about-the-triple-product-identity-for-partial-derivatives?noredirect=1&lq=1)
+    - A [blog post](https://gioretikto.github.io/mat/multivariable_calculus/euler_identity.html)
+    - Wikipedia -- [Triple Product Rule](https://en.wikipedia.org/wiki/Triple_product_rule)
+- YT (EpsilonDelta) -- [Ambiguity With Partial ∂ Notation, and How to Resolve It](https://www.youtube.com/watch?v=mICbKwwHziI)
+- YT (EpsilonDelta) -- [They Use ∂ Differently in Math and Physics. Which is Better?](https://www.youtube.com/watch?v=QFHSHhpbo00)
+- Wikipedia -- [Implicit Function Theorem](https://en.wikipedia.org/wiki/Implicit_function_theorem)
+- Wikipedia -- [State postulate](https://en.wikipedia.org/wiki/State_postulate)
+- Wikipedia -- [Conjugate variables (thermodynamics)](https://en.wikipedia.org/wiki/Conjugate_variables_(thermodynamics))
+
+Textbooks for learning thermo:
+- Korestky, Milo D. -- [Engineering and Chemical Thermodynamics, 2ed](https://www.amazon.com/Engineering-Chemical-Thermodynamics-Milo-Koretsky/dp/0470259612), a great textbook for learning thermodynamics
+- Levine, Ira N. -- [Physical Chemistry, 6ed](https://archive.org/details/PhysicalChemistry6eByIraN.Levine), a less good textbook
+- Callen, Herber B. -- [Thermodynamics and an Introduction to Thermostatistics](https://www.amazon.com/Thermodynamics-Intro-Thermostat-2E-Clo/dp/0471862568). Seems to do a great job with mathematical formalism, like defining critical thermodynamic quantities like $P, V, T, S$ without just tacitly assuming that they exist.
 
