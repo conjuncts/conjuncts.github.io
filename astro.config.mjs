@@ -14,7 +14,11 @@ export default defineConfig({
         ],
         rehypePlugins: [
             ['rehype-katex', {
-            // Katex plugin options
+                macros: {
+                    "\\pdc": "\\left(\\frac{\\partial #1}{\\partial #2}\\right)_{#3}",
+                    "\\dd": "\\frac{d#1}{d#2}",
+                    "\\pd": "\\frac{\\partial #1}{\\partial #2}"
+                }
             }]
         ]
     }
