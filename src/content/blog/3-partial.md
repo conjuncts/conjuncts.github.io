@@ -1,6 +1,7 @@
 ---
-title: 'Thermo Partial Derivatives Make No Sense'
+title: 'Thermo Partial Derivatives Demystified'
 pubDate: 'Aug 10 2025'
+revDate: 'Aug 11 2025'
 description: "A diatribe against how partial derivatives in thermodynamics are notated, why they can be immensely confusing for outsiders, and how you can decipher them"
 author: conjuncts
 heroImage: '../../assets/3-partial.svg'
@@ -38,7 +39,7 @@ $$
 \Delta S(T, V_2) - \Delta S(T, V_1) = \int_{V_1}^{V_2} \pdc{P}{T}{V} dV
 $$
 
-**How the hell** do you integrate with respect to V, while supposedly keeping V constant?
+**How the #!?** do you integrate with respect to V, while supposedly keeping V constant‽
 
 ## P2. Unconvincing proofs
 
@@ -58,7 +59,7 @@ They are often "proved" using arguments with differentials. This is very unconvi
 
 ## P3. A confusing standard
 
-From the identities, the variable being held constant makes a **huge** difference in how you evaluate the partial derivative.
+From the identities, the variable being held constant makes a *huge* difference in how you evaluate the partial derivative.
 
 In comparison with the mathematical definition, in which constant variables are implicitly baked into the function, can be omitted, and are somewhat irrelevant; 
 
@@ -83,9 +84,11 @@ This means we often work with a 2D manifold in thermodynamic space (for instance
 
 Also note that in thermodynamics, it can often be assumed that **variables are interdependent**. So if we have P, V, T, assume that each can be written in terms of the other 2 - that all those functions exist.
 
-## S2. My approach
+(Actually, sometimes variables are not globally interdependent. But thanks to what's known as the [Implicit Function Theorem](https://en.wikipedia.org/wiki/Implicit_function_theorem), what we can say is that locally, near a point, the variables are often interdependent)
 
-Here is my proposal.
+## S2. The approach
+
+Here is the approach.
 
 Whenever you see a parenthetical partial derivative - ie.
 
@@ -158,6 +161,7 @@ $$
 
 Depending on what is held constant, we refer to *completely different functions*! And if we aren't careful, they both would share the same name "P"!
 
+This exactly highlights why parentheticals are used. Without them, $\pd{P}{T}$ would be ambiguous. But this also explains why parentheticals are not used in mathematics. Math people work with the function directly, and in that case, it is also unambiguous!
 
 Note: this ambiguity with compositions and partial derivatives has been previously been covered excellently by [EpsilonDelta](https://www.youtube.com/watch?v=QFHSHhpbo00) -- [twice](https://www.youtube.com/watch?v=mICbKwwHziI). I recommend!
 
@@ -311,7 +315,7 @@ Luckily, it seems that people have indeed already done this work. I recommend es
 
 
 
-Assume from the state postulate that $U, P, V, T$ are all functions of 2 others. Assume $f, g, h: \mathbb{R}^2 \to \mathbb{R}$, differentiable, partials never 0, and write:
+Assume from the state postulate that $U, P, V, T$ are all functions of 2 others. Assume $f, g, h: \mathbb{R}^2 \to \mathbb{R}$, differentiable, partials never $0$, and write:
 $$
 U = f(P, V)
 $$
@@ -448,7 +452,7 @@ I apologize for the clickbait. There isn't actually anything wrong in the mathem
 
 I've bashed the notation quite a lot, but perhaps undeservedly: the notation does makes sense once you get the hang of it. And the notation does genuinely work better when you have many dependent variables ([re: EpsilonDelta](https://www.youtube.com/watch?v=QFHSHhpbo00)), as is common in physics/thermodynamics.
 
-However, I do think the pedagogy could be improved tremendously. It's incredibly easy to skip and ignore the many assumptions and hoops you have to make to really understand these partial derivatives. It's also incredibly easy to ignore the connection to the partial derivative definition known to the rest of mathematics. I doubt that any introductory undergraduate textbook will decipher partial derivatives as thoroughly as outlined today, but I wish it weren't so!
+However, I do think the way it's taught could be improved tremendously. It's incredibly easy to skip and ignore the many assumptions and hoops you have to make to really understand these partial derivatives. It's also incredibly easy to ignore the connection to the partial derivative definition known to the rest of mathematics. I doubt that any introductory undergraduate textbook will decipher partial derivatives as thoroughly as outlined today, but I wish it weren't so!
 
 
 ## Additional gripes and future directions
@@ -457,10 +461,7 @@ My biggest gripe is that thermodynamics makes some huge assumptions that often g
 
 - Not mentioning the state postulate.
     - PLEASE mention the state postulate.
-    - The state postulate says that we often work with a 2D manifold in thermodynamic space.
-    - For instance, the PvT surface is indeed a surface (2D manifold).
-    - Without this assumption, many problems seem ill-posed in the sense of having many or no solutions.
-    - More generally, the Gibbs phase rule can be used to to get the manifold dimension.
+    - Without this assumption, if you don't know it's a 2D manifold, many problems seem ill-posed in the sense of having many or no solutions.
 - When we have an implicit relation, we often assume that each variable can be written in terms any 2 others.
 - Partial derivatives are often allowed to be zero, infinity, or undefined.
 
