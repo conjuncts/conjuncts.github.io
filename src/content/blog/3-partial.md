@@ -1,5 +1,5 @@
 ---
-title: 'Thermo Partial Derivatives Demystified'
+title: 'Thermo Partial Derivatives Are Nonsense'
 pubDate: 'Aug 10 2025'
 revDate: 'Aug 11 2025'
 description: "A diatribe against how partial derivatives in thermodynamics are notated, why they can be immensely confusing for outsiders, and how you can decipher them"
@@ -171,7 +171,7 @@ I would also like to point out something strange. When you plug in $V = g(T, S)$
 
 Where does $V$ go? Why doesn't $P$ become a function of all of $T$, $S$, $V$?
 
-Intuitive answer: by the state postulate, $P$ **cannot be** a function of those 3 variables - because then it would be **overconstrained**. Then, for arbitrary 3 variables, you can't expect that point to stay on a 2D manifold. I hope you see how critical the state postulate is!
+Intuitive answer: by the state postulate, $P$ *cannot be* a function of those 3 variables - because then it would be **overconstrained**. Then, for arbitrary 3 variables, you can't expect that point to stay on a 2D manifold. I hope you see how critical the state postulate is!
 
 
 ## S5. Proving the Triple Product Rule
@@ -420,7 +420,7 @@ $$
 
 ### Future directions
 
-I wrote up this proof because the typical one uses differentials - and unconvincingly, $\dd{P}{V}$ gets transformed to $\pdc{P}{V}{T}$ because "T is constant".
+I wrote up proof S6 because the typical one uses differentials - and unconvincingly, $\dd{P}{V}$ gets transformed to $\pdc{P}{V}{T}$ because "T is constant".
 
 
 I couldn't find any literature that uses the inverse function theorem to also patch up this identity when no global inverse exists. But it feels like a promising idea.
