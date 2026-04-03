@@ -18,9 +18,7 @@ I suspect that this concept is quite commonly understood and intuited, yet rarel
 
 The voltage-height analogy is quite easy to justify. It is embedded in terminology such as voltage **drop**, **high** and **low** voltage, and **ground**. It has firm theoretical basis, as electric potential is closely analogous to gravitational potential.
 
-The current-width analogy is harder to justify. Current represents a flow rate (charge over time), which does not immediately translate to "width". 
-
-I imagine "width" to be the width of a river. Neglecting the river's depth, you would expect a river's width to be proportional to how much current passes through. 
+The current-width analogy is harder to justify. Current represents a flow rate (charge over time), which does not immediately translate to "width". But I imagine "width" to be the width of a river. Neglecting the river's depth, you would expect a river's width to be proportional to how much current passes through. 
 
 The height/width analogy is rooted in the water analogy. But the appeal is that instead of worrying about pressure, depth, or flow rates, thinking about "width" is much simpler.
 
@@ -38,6 +36,8 @@ Also, the width of each waterfall must be the same, since there is nowhere for t
 
 (That is, the current is the same for each resistor.)
 
+
+
 ### Parallel
 
 Supposing you have 3 resistors in parallel, I imagine a river diverging into 3 separate streams. Because the water always needs somewhere to go, I imagine that "width is preserved". That is, the width of the main river equals the sum of the widths of the streams. 
@@ -47,6 +47,10 @@ Supposing you have 3 resistors in parallel, I imagine a river diverging into 3 s
 Because the tops of each waterfall are connected (and hence level), and the bottoms of each waterfall are connected (and hence level), I would expect the difference in height to be the exact same among each waterfall. 
 
 (That is, the voltage drop is the same for each resistor.)
+
+![Resistors in series](../../assets/resistor_series.png)
+
+![Resistors in parallel](../../assets/resistor_parallel.png)
 
 ## Kirchhoff's Circuit Laws
 
