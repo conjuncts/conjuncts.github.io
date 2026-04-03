@@ -1,27 +1,25 @@
 ---
-title: 'Flattening JSON'
+title: 'Flattening Chaotic JSON'
 description: 'flattening JSON in polars'
 pubDate: 'Jul 29 2025'
+revDate: 'Apr 3 2026'
 # heroImage: '../../assets/blog-placeholder-4.jpg'
 tags: ["polars", "data"]
 ---
 
-I recently encountered a super useful pattern for flattening JSON in dataframes. Sometimes, I'm faced with truly chaotic JSON data -- nested data that does not follow any schema whatsoever, or with so many deviations that creating a fully comprehensive schema is impossible. Examples include LLM output and user-generated data dumps.
+Sometimes, you will encounter truly chaotic JSON data -- nested data that does not follow any schema whatsoever, with so many deviations that creating a fully comprehensive schema is impossible. Examples include LLM output and user-generated data dumps.
 
-How can this data be best stored? There's pickle, but it takes quite a long time for python to serialize/deserialize. Parquet does not support python dict (de-)serialization. Most often, JSON is encountered as strings, but then `json.loads(obj)` is needed every time the data is loaded, which takes a noticable amount of time. 
+How can this data be best stored? There's pickle, but it takes quite a long time for python to serialize/deserialize. Parquet does not support python dict (de-)serialization. Most often, JSON is encountered as strings, but then `json.loads(obj)` is needed every time the data is loaded, which is slow. 
 
 The trick? Transform data into `key` and `value` columns. By flattening, everything can be stored as native types.
-
 
 ## Why not pl.json_normalize()?
 
 Polars provides [json_normalize](https://docs.pola.rs/api/python/stable/reference/api/polars.json_normalize.html), which is quite similar. Why not use that?
 
-First, `json_normalize` requires that the json always follows a consistent schema. This may not be the case when working with truly chaotic JSON data.
+First, `json_normalize` requires the json to follow a consistent schema. This may not be the case when working with chaotic JSON data. Hence, a gigantic `infer_schema_length` is required to capture all variations in the schema. The more variations there are, the more columns are necessary; >1000 columns brought polars to a crawl. With most columns almost entirely empty, this is clearly not the right approach.
 
-Hence, a gigantic `infer_schema_length` is required to capture all variations in the schema. Worse, the more variations there are, the more columns are necessary. At >1000 columns, I had a noticable slowdown. Plus, with many of the columns almost entirely empty, this is almost certainly not the right approach.
-
-Finally, at time of writing, `json_normalize` has limited support for nested lists.
+(At time of writing, `json_normalize` also has limited support for nested lists.)
 
 
 ## The approach
