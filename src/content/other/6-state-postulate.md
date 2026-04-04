@@ -47,3 +47,9 @@ Where does $V$ go? Why doesn't $P$ become a function of all of $T$, $S$, $V$?
 
 Intuitive answer: by the state postulate, $P$ *cannot be* a function of those 3 variables - because then it would be **overconstrained**. Then, for arbitrary 3 variables, you can't expect that point to stay on a 2D manifold. I hope you see how critical the state postulate is!
 
+
+
+- Wikipedia -- [Implicit Function Theorem](https://en.wikipedia.org/wiki/Implicit_function_theorem)
+- Wikipedia -- [State postulate](https://en.wikipedia.org/wiki/State_postulate)
+
+- Wikipedia -- [Conjugate variables (thermodynamics)](https://en.wikipedia.org/wiki/Conjugate_variables_(thermodynamics))

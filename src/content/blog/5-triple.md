@@ -13,16 +13,32 @@ $$
 $\def\dd#1#2{\frac{d#1}{d#2}}$
 $\def\pd#1#2{\frac{\partial #1}{\partial #2}}$
 
+## Motivation
 
+The triple product rule is normally stated as: 
+$$
+-1 = \pdc{P}{T}{V} \pdc{V}{P}{T} \pdc{T}{V}{P} 
+$$
 
-## S5. Proving the Triple Product Rule
+And it is normally "proved" using an informal argument involving differentials.
 
-I now prove the identities in the language of multivariable calculus.
+That proof is unconvincing for many reasons, but one reason is: what happens if a partial derivatives is zero? We get the nonsensical identity $0 = -1$. Can we pinpoint the precise conditions needed for the identity to hold?
+
+The typical proof of the 4-quantity identity also uses differentials -- and unconvincingly, $\dd{P}{V}$ gets transformed to $\pdc{P}{V}{T}$ because "T is constant". Can we also amend that proof?
+
+## Proof
 
 
 (TL;DR: see [here](https://math.stackexchange.com/a/3452693/1537176))
 
-Assume from the state postulate that $P, V, T$ are all functions of each other. Let $f, g, h: \mathbb{R}^2 \to \mathbb{R}$, differentiable, partials never $0$, and write:
+Let $M$ be a $C^1$-differentiable 2D manifold (thermodynamic surface) in $(P, V, T) = \mathbb{R}^3$. Let some point $(p_0, v_0, t_0) = u \in M$ be given. 
+
+From the definition of a manifold, for some open neighborhood $W$ near $u$, $M$ may be described as the solutions of $F(P, V, T) = 0$, where $F: \mathbb{R}^3 \to \mathbb{R}$ is a differentiable function. (Think of $F$ as an arbitrary implicit relation, like $P^2T + TV + V^3 \ln P= 0$.)
+
+**Suppose, furthermore, that the gradient $\nabla F$ never has a zero component in $W$.** (In other words, we guarantee that partial derivatives never vanish.)
+
+From the Implicit Function Theorem, we obtain an open neighborhood $U$ for which (because of the nonvanishing condition) any variable can be described as the graph of any other 2 variables: that is, we obtain smooth $f, g, h: \mathbb{R}^2 \to \mathbb{R}$ such that the point $(P, V, T)$ lies on the thermodynamic surface $M \cap U$ if and only if
+
 $$
 P = f(V, T) \\
 V = g(P, T) \\
@@ -35,7 +51,7 @@ $$
 -1 = \pd{f}{T} \pd{g}{P} \pd{h}{V}
 $$
 
-Using S2, equivalently:
+By [Definition 1](/blog/3-partial/#definition), that is exactly
 
 $$
 -1 = \pdc{P}{T}{V} \pdc{V}{P}{T} \pdc{T}{V}{P} 
@@ -44,7 +60,9 @@ $$
 
 **Proof**.
 
-Like mentioned in S3, we may plug one function into the other. We must be careful in composing ($g: \mathbb{R}^2 \to \mathbb{R}$ has real-valued is $f$ takes 2 real numbers, so $f \circ g$ makes no sense.) Hence, define:
+Intuitively, if $g$ which takes $(P, T) \to V$ is substituted into $f$ which takes $(V, T) \to P$ to yield a function $(P, T) \to P$, then we expect that the function ignores $T$ and simply spits out $P$.
+
+But we must be careful: $g: \mathbb{R}^2 \to \mathbb{R}$ is real-valued but $f$ takes 2 real numbers, so $f \circ g$ makes no sense. Hence, define:
 
 $$
 g^*(P, T) = \begin{bmatrix}
@@ -54,7 +72,7 @@ T
 $$
 
 
-Then observe
+Then
 $$
 P = f(V, T) = f(g(P, T), T) = (f \circ g^*)(P, T) = P
 $$
@@ -128,44 +146,33 @@ $$
 1 = -\pd{f}{T} \pd{g}{P} \frac{1}{\pd{g}{T}}
 $$
 
-We now need to flip a derivative, that is, we need $(\pd{g}{T})^{-1} = (\pdc{V}{T}{P})^{-1} = \pdc{T}{V}{P} = \pd{h}{V}$. This is not exactly the same equality (1). But we can obtain the fixed equality by repeating the above process -- but instead of composing $f$ and $g$, compose $g$ and $h$.
+We now need to flip a derivative, that is, we need $(\pd{g}{T})^{-1} = (\pdc{V}{T}{P})^{-1} = \pdc{T}{V}{P} = \pd{h}{V}$. This is not exactly the same equality (1). But we can obtain the fixed equality by repeating the above process -- but instead of composing $f$ and $g$, compose $g$ and $h$. We finally obtain
 
-Hence, 
 $$
 \pd{f}{T} \pd{g}{P} \pd{h}{V} = -1
 $$
 
-$\square$
-
-### Future Directions
-
-Now, I admit that there are some edge cases that I haven't fully resolved yet. For instance, what happens if any of the partial derivatives vanish? But then the triple product rule breaks down anyways, because then $0 = -1$. 
-
-What for some $V$, $T$ there are multiple valid $P$? (No global inverse) Is there a way to prove the identity by considering an implicit relation on $P$, $V$ and $T$, rather than having to use an explicit one?
-
-I suspect the way to go is the [implicit function theorem](https://en.wikipedia.org/wiki/Implicit_function_theorem#Statement_of_the_theorem). But I'd have to rework the proof to work on $U \subset \mathbb{R}^2$.
-
 ### Further Reading
 
-Luckily, it seems that people have indeed already done this work. I recommend especially the [first link](https://math.stackexchange.com/a/3452693/1537176), which offers a similar but more concise proof using the IFT.
-- [stack exchange](https://math.stackexchange.com/questions/3452654/finding-relationship-using-the-triple-product-rule-for-partial-derivatives)
-- [blog post](https://gioretikto.github.io/mat/multivariable_calculus/euler_identity.html)
-- [EpsilonDelta](https://www.youtube.com/watch?v=QFHSHhpbo00)
+There are more concise proofs using the same approach. Notably:
+- Math SE -- [Triple Product Rule](https://math.stackexchange.com/a/3452693/1537176)
+- gioretikto.github.io -- [Triple Product Rule](https://gioretikto.github.io/mat/multivariable_calculus/euler_identity.html)
+
+Both similarly demand the never vanishing partials condition.
 
 ## S6. Proving the Unnamed 4-Quantity Identity
 
+Assume $M$ to be a $C^1$-differentiable 2D manifold (thermodynamic surface) in $(U, P, V, T) = \mathbb{R}^4$. 
 
-
-Assume from the state postulate that $U, P, V, T$ are all functions of 2 others. Assume $f, g, h: \mathbb{R}^2 \to \mathbb{R}$, differentiable, partials never $0$, and write:
+Assume that $M$ can be described (within an open neighborhood $W$ around point $u \in M$) with the functions $f, g, h: \mathbb{R}^2 \to \mathbb{R}$, differentiable, where 
 $$
 U = f(P, V)
 $$
 $$
 P = g(V, T)
 $$
-$$
-U = h(V, T)
-$$
+
+if and only if $(U, P, V, T)$ is on the thermodynamic surface ($M \cap W$).
 
 **Claim**.
 
@@ -173,21 +180,21 @@ $$
 \pdc{U}{V}{T} = \pdc{U}{V}{P} + \pdc{U}{P}{V} \pdc{P}{V}{T}
 $$
 
-Using S2, equivalently:
+That is equivalent under [Definition 1](/blog/3-partial/#definition) to:
 
 $$
 \pd{h}{V} = \pd{f}{V} + \pd{f}{P} \pd{g}{V}
 $$
 
+where $h$ is defined as
+
+$$
+h(V, T) := f(g(V, T), V) = f(P, V) = U
+$$
+
 **Proof**.
 
-The proof is similar. First, note that combining 
-
-$$
-U = h(V, T) = f(P, V) = f(g(V, T), V)
-$$
-
-Construct:
+The proof is similar. First, construct
 
 $$
 g^*(V, T) = \begin{bmatrix}
@@ -251,9 +258,9 @@ $$
 \pd{f}{P}\pd{g}{T} = \pd{h}{T} \tag{2}
 $$
 
-(1) is exactly the desired identity. $\square$
+(1) is exactly the desired identity.
 
-Note that (2) is simply the chain rule -- equivalently:
+(2) is simply the chain rule -- equivalently:
 
 $$
 \pdc{U}{P}{V} \pdc{P}{T}{V} = \pdc{U}{T}{V}
@@ -261,21 +268,9 @@ $$
 
 ### Future directions
 
-I wrote up proof S6 because the typical one uses differentials - and unconvincingly, $\dd{P}{V}$ gets transformed to $\pdc{P}{V}{T}$ because "T is constant".
+You will occasionally have functions $f$ and $g$ simply by construction. But it would be nice to find some guarantee of $f$ and $g$ using the Inverse Function Theorem. 
 
-
-I couldn't find any literature that uses the inverse function theorem to also patch up this identity when no global inverse exists. But it feels like a promising idea.
-
-
-
-- Partial derivatives are often allowed to be zero, infinity, or undefined.
-
-### Implicit Relations?
-
-Here, I resolve my doubts using explicit parametrizations -- and assume that everything is interdependent and invertible. But this is quite restrictive. Perhaps an implicit approach makes more sense and is more powerful. I still haven't fully resolved these assumptions with edge cases / when they go wrong. 
-
-I believe the way to go is the [Implicit Function Theorem](https://en.wikipedia.org/wiki/Implicit_function_theorem), which connects an implicit relation with local parametrizations, fixing proofs when no global parametrization exists. However, I perhaps need to take Differential Topology or Geometry to grasp the nuances of this.
-
+Here, partial derivatives are allowed to be zero with no issue.
 
 ## References
 
@@ -293,4 +288,4 @@ I believe the way to go is the [Implicit Function Theorem](https://en.wikipedia.
 
 ## Acknowledgment
 
-Is substantially revised from originally released Aug 10 2025. 
+This article is substantially revised from an article originally released Aug 10 2025. 

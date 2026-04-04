@@ -16,9 +16,12 @@ I suspect that this concept is quite commonly understood and intuited, yet rarel
 1. **Voltage** is **height**.
 2. **Current** is **width**.
 
-The voltage-height analogy is quite easy to justify. It is embedded in terminology such as voltage **drop**, **high** and **low** voltage, and **ground**. It has firm theoretical basis, as electric potential is closely analogous to gravitational potential.
+The voltage-height analogy is quite easy to justify. It is embedded in terminology such as voltage **drop**, **high** and **low** voltage, and **ground**. It has firm theoretical basis, as electric potential is very analogous to gravitational potential.
 
-The current-width analogy is harder to justify. Current represents a flow rate (charge over time), which does not immediately translate to "width". But I imagine "width" to be the width of a river. Neglecting the river's depth, you would expect a river's width to be proportional to how much current passes through. 
+The current-width analogy is harder to justify. Current represents a flow rate (charge over time). There is precedent to thinking of flow as width: for example, [Sankey diagrams](https://en.wikipedia.org/wiki/Sankey_diagram) and highway lanes.
+
+I imagine "width" to be the width of a river. Neglecting the river's depth, you would expect a river's width to be proportional to how much current passes through. 
+
 
 The height/width analogy is rooted in the water analogy. But the appeal is that instead of worrying about pressure, depth, or flow rates, thinking about "width" is much simpler.
 
@@ -36,7 +39,7 @@ Also, the width of each waterfall must be the same, since there is nowhere for t
 
 (That is, the current is the same for each resistor.)
 
-
+![Resistors in series](../../assets/resistor_series.png)
 
 ### Parallel
 
@@ -48,13 +51,10 @@ Because the tops of each waterfall are connected (and hence level), and the bott
 
 (That is, the voltage drop is the same for each resistor.)
 
-![Resistors in series](../../assets/resistor_series.png)
-
-![Resistors in parallel](../../assets/resistor_parallel.png)
 
 ## Kirchhoff's Circuit Laws
 
-In the more general case we must work with Kirchhoff's circuit laws. Yet that is where the height/width analogy works the best!
+In the more general case we turn to Kirchhoff's circuit laws. Yet that is where the height/width analogy works the best!
 
 ### Kirchhoff's Voltage Law
 
@@ -62,7 +62,7 @@ If thinking of voltage as height: of course you have to get back to the height y
 
 When thinking of height, we have a natural intuition of what is physical and unphysical.
 
-It is not like an M. C. Escher painting, where you can constantly be climbing in height yet back to where you started:
+It is not like an M. C. Escher painting, where you can constantly climb in height yet return back to where you started:
 
 ![M. C. Escher](https://upload.wikimedia.org/wikipedia/en/6/66/Ascending_and_Descending.jpg)
 
@@ -75,7 +75,3 @@ When thinking about how rivers split, one reasonable assumption is that if a riv
 That is the essence of Kirchhoff's Current Law: that current should be "balanced" where the current coming in equals the current coming out.
 
 When thinking about width, that is quite reasonable: [Sankey diagrams](https://en.wikipedia.org/wiki/Sankey_diagram) and highway lanes are two other instances where when things split off, overall "width" is preserved.
-
-## Resistance
-
-To me, the essence of resistance is really that voltage and current are (often) proportional according to Ohm's law. 
