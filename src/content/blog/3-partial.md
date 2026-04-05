@@ -1,7 +1,7 @@
 ---
 title: 'Notational Differences of Partial Derivatives In Thermodynamics'
 pubDate: 'Apr 3 2026'
-revDate: 'Apr 3 2026'
+revDate: 'Apr 4 2026'
 description: "A diatribe against how partial derivatives in thermodynamics are notated, why they can be immensely confusing for outsiders, and how you can decipher them"
 author: conjuncts
 heroImage: '../../assets/3-partial.svg'
@@ -17,7 +17,7 @@ $\def\pd#1#2{\frac{\partial #1}{\partial #2}}$
 
 # Introduction
 
-As a student in introductory thermodynamics, I've noticed that thermodynamicists seem to use a completely different notation for partial derivatives. 
+As a student in introductory thermodynamics, I noticed that thermodynamicists seem to use a completely different notation for partial derivatives. 
 
 Instead of using the typical notation found in your math textbooks, which is to define function $f(x, y, z)$ to have the partial derivative $\pd{f}{x}$ which depends on the function $f$ and a variable $x$...
 
@@ -128,9 +128,9 @@ $$
 
 It becomes clear that $\pd{P}{T}$ can refer to either $\pd{f}{T}$ or $\pd{h}{T}$, which are completely different functions! By applying Definition 1, we get $\pdc{P}{T}{V} = \pd{f}{T}$, which is completely not the same as $\pdc{P}{T}{S} = \pd{h}{T}$.
 
-For thermodynamicists, parenthesicals are **not** redundant but rather convey **crucial** information that distinguish whether you are working with function $f$ or $h$. 
+For thermodynamicists, parentheticals are **not** redundant but rather convey **crucial** information that distinguish whether you are working with function $f$ or $h$. 
 
-But in mathematics, parentheticals **are** redudant, because mathematicians are working with the function directly! 
+But in mathematics, parentheticals **are** redundant, because mathematicians are working with the function directly! 
 
 And depending on what is held constant, the same name ($P$) can refer to **completely different functions**!
 
@@ -138,7 +138,7 @@ And depending on what is held constant, the same name ($P$) can refer to **compl
 ---
 
 <details>
-<summary>See concrete example (ideal gas)</summary>
+<summary>First example (ideal gas)</summary>
 
 
 Consider an ideal gas with one mole:
@@ -179,6 +179,77 @@ Yet often the variable and function are given the same name, in which $\pd{P}{T}
 ---
 
 
+<details>
+<summary>Second example (kinematics)</summary>
+
+The next example comes not from thermodynamics, but from physics. Total energy is the familiar sum of gravitational potential and kinetic energy:
+
+$$E = mgh + \frac{1}{2}mv^2   \tag{1}$$
+
+Clearly, $\pd{E}{v} = mv$.
+
+Suppose, furthermore, that we have a free-falling object.
+
+$$h = \frac{1}{2} gt^2 + v_0 t + h_0 \tag{2}$$
+
+By taking $v = \dd{h}{t} = gt + v_0$ and solving for $t$, we can derive the familiar velocity-displacement kinematic equation:
+
+$$
+h = \frac{v^2 - v_0^2}{2g} + h_0   \tag{3}
+$$
+
+Plugging that into Equation 1 yields:
+
+$$
+E = \frac{1}{2}m(v^2-v_0^2) + mgh_0 + \frac{1}{2}mv^2
+$$
+$$
+= mv^2 + mgh_0 - \frac{1}{2}mv_0^2  \tag{4}
+$$
+
+But now, if you take $\pd{E}{v}$, you get:
+
+$$
+\pd{E}{v} = 2mv
+$$
+
+which is different from the $\pd{E}{v} = mv$ calculated above!
+
+---
+
+The key to the paradox is that $\pdc{E}{v}{h} = 2mv$, but $\pdc{E}{v}{h_0, v_0} = mv$.
+
+We can also look at the functions involved. Equation 1 is described by a function (call it $q$)
+$$
+E = q(v, h) = mgh + \frac{1}{2}mv^2
+$$
+
+We then solved for $h$ in terms of $v$, which yielded a new function (call it $r$)
+
+$$
+h = r(v, v_0, h_0) = \frac{v^2 - v_0^2}{2g} + h_0
+$$
+
+When we substituted $h$ into Equation 1, we performed *function composition* to yield a new function $s$:
+
+$$
+E = q(v, h) = q(v, r(v, v_0, h_0)) =: s(v, v_0, h_0)
+$$
+
+The key part is that $E$ can refer to two different functions! -- either $q$ or $s$. If we were to follow the (very common) practice of assigning the function as the same variable, then two very different functions get assigned the same name: $E = E(v, h) = E(v, v_0, h_0)$.
+
+Hence, when we calculated $\pd{E}{v}$ for Equation 1, we found $\pdc{E}{v}{h} = \pd{q}{v} = mv$.
+
+But when we calculated $\pd{E}{v}$ for Equation 4, we found $\pdc{E}{v}{v_0, h_0} = \pd{s}{v} = 2mv$.
+
+As you can see, $\pd{E}{v}$ alone is ambiguous. To be unambiguous, you have two options:
+1. Use parenthetical notation.
+2. Be explicit in the functions involved; do not let $E$ and the function share the same name.
+
+</details>
+
+---
+
 As a result of simple function composition, and combined with the common practice of assigning the variable the same name as the function, we get a dangerous (and rarely discussed) ambiguity of partial derivatives. However, the confusion can be clarified by understanding the underlying functions $f$, $g$, and $h$.
 
 
@@ -202,7 +273,7 @@ Since $\pd{f}{T} (T, V)$ is a function just like any other, of course it can be 
 
 ## Revisiting P2
 
-If we have $\pdc{P}{T}{V}$ and $P = f(T, V)$, **even if** $V$ depends on $T$ through some relation $V = g(T)$, that doesn't matter! 
+If we have $\pdc{P}{T}{V}$ which implies existence of $P = f(T, V)$, **even if** $V$ depends on $T$ through some relation $V = g(T)$, that doesn't matter! 
 
 Everything is still well-defined, since we know that $\pdc{P}{T}{V} = \pd{f}{T}$ for the function $f$ that takes both $T$ and $V$ as dependent variables. No need to worry about what happens after composition of $f$ with $g$.
 
@@ -210,7 +281,7 @@ Everything is still well-defined, since we know that $\pdc{P}{T}{V} = \pd{f}{T}$
 
 By connecting $\pdc{P}{T}{V}$ to the function $P = f(T, V)$, students can start to bridge thermodynamic identities with the theorems introduced in multivariable calculus. 
 
-The proof of the triple product rule from is perhaps the most convincing evidence that Definition 1 is both valid and useful. However, this article is already getting long, so a proof of the triple product rule and 4-quantity identity is left to [another article](/blog/5-triple/).
+The proof of the triple product rule from is perhaps the most convincing evidence that Definition 1 is both valid and useful. However, this article is already long, so a proof of the triple product rule and 4-quantity identity is left to [another article](/blog/5-triple/).
 
 # Conclusion
 
@@ -245,6 +316,6 @@ Discussion about formalisms:
 - Physics SE -- [Contact Geometry?](https://physics.stackexchange.com/questions/388318/how-exactly-is-the-formalism-of-thermodynamics-based-on-contact-geometry)
 - Callen, Herber B. -- [Thermodynamics and an Introduction to Thermostatistics](https://www.amazon.com/Thermodynamics-Intro-Thermostat-2E-Clo/dp/0471862568)
 
-# Acknoledgment
+---
 
 This article is substantially revised from an article originally released Aug 10 2025. 
