@@ -37,7 +37,7 @@ From the definition of a manifold, for some open neighborhood $W$ near $u$, $M$ 
 
 **Suppose, furthermore, that the gradient $\nabla F$ never has a zero component in $W$.** (In other words, we guarantee that partial derivatives never vanish.)
 
-From the Implicit Function Theorem, we obtain an open neighborhood $U$ for which (because of the nonvanishing condition) any variable can be described as the graph of any other 2 variables: that is, we obtain smooth $f, g, h: \mathbb{R}^2 \to \mathbb{R}$ such that the point $(P, V, T)$ lies on the thermodynamic surface $M \cap U$ if and only if
+From the Implicit Function Theorem, we obtain an open neighborhood $U$ for which (because of the nonvanishing condition) any variable can be described as the graph of any other 2 variables: that is, we obtain $C^1$ functions $f, g, h: \mathbb{R}^2 \to \mathbb{R}$ such that the point $(P, V, T)$ lies on the thermodynamic surface $M \cap U$ if and only if
 
 $$
 P = f(V, T) \\
@@ -60,7 +60,7 @@ $$
 
 **Proof**.
 
-Intuitively, if $g$ which takes $(P, T) \to V$ is substituted into $f$ which takes $(V, T) \to P$ to yield a function $(P, T) \to P$, then we expect that the function ignores $T$ and simply spits out $P$.
+Intuitively, if $g$ which takes $(P, T) \to V$ is substituted into $f$ which takes $(V, T) \to P$ to yield an overall function $(P, T) \to P$, then we expect that the overall function ignores $T$ and simply spits out $P$.
 
 But we must be careful: $g: \mathbb{R}^2 \to \mathbb{R}$ is real-valued but $f$ takes 2 real numbers, so $f \circ g$ makes no sense. Hence, define:
 

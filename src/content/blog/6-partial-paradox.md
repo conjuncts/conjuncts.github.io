@@ -14,7 +14,7 @@ $$
 $\def\dd#1#2{\frac{d#1}{d#2}}$
 $\def\pd#1#2{\frac{\partial #1}{\partial #2}}$
 
-*A short-and-sweet physics paradox involving simple kinematics which illuminates a subtle but terrible ambiguity in partial derivative notation.*
+*A short-and-sweet physics paradox involving simple kinematics, which illuminates a subtle but terrible ambiguity in partial derivative notation.*
 
 Partial derivatives seem simple, but they have caused me much headache through a combination of [notational ambiguity](https://www.youtube.com/watch?v=mICbKwwHziI)  and [missing definitions](/blog/3-partial/). I devised a simple paradox to explain why partial derivatives are horribly ambiguous.
 
@@ -22,18 +22,16 @@ Partial derivatives seem simple, but they have caused me much headache through a
 
 Total energy is the familiar sum of gravitational potential and kinetic energy:
 
-$$E = mgh + \frac{1}{2}mv^2   \tag{1}$$
+$$
+E = mgh + \frac{1}{2}mv^2   \tag{1}
+$$
 
 Clearly, $\pd{E}{v} = mv$.
 
-Suppose, furthermore, that we have a free-falling object.
-
-$$h = \frac{1}{2} gt^2 + v_0 t + h_0 \tag{2}$$
-
-By taking $v = \dd{h}{t} = gt + v_0$ and solving for $t$, we can derive the familiar velocity-displacement kinematic equation:
+Suppose, furthermore, that we have a free-falling object: $h = \frac{1}{2} gt^2 + v_0 t + h_0$. By taking $v = \dd{h}{t} = gt + v_0$ and solving for $t$, we obtain the familiar velocity-displacement kinematic equation:
 
 $$
-h = \frac{v^2 - v_0^2}{2g} + h_0   \tag{3}
+h = \frac{v^2 - v_0^2}{2g} + h_0   \tag{2}
 $$
 
 Plugging that into Equation 1 yields:
@@ -42,7 +40,7 @@ $$
 E = \frac{1}{2}m(v^2-v_0^2) + mgh_0 + \frac{1}{2}mv^2
 $$
 $$
-= mv^2 + mgh_0 - \frac{1}{2}mv_0^2  \tag{4}
+= mv^2 + mgh_0 - \frac{1}{2}mv_0^2  \tag{3}
 $$
 
 But now, if you take $\pd{E}{v}$, you get:
@@ -55,9 +53,7 @@ which is different from the $\pd{E}{v} = mv$ calculated above!
 
 ## The Solution
 
-The key to the paradox is that $\pdc{E}{v}{h} = mv$, but $\pdc{E}{v}{h_0, v_0} = 2mv$. 
-
-**That is, $\pd{E}{v}$ depends on the choice of dependent and constant variables.**
+The key to the paradox is that $\pdc{E}{v}{h} = mv$, but $\pdc{E}{v}{h_0, v_0} = 2mv$. **That is, $\pd{E}{v}$ depends on the choice of dependent and constant variables.**
 
 Let's look at the exact functions involved. Equation 1 is described by a function (call it $q$)
 $$
@@ -80,7 +76,7 @@ The key part is that $E$ can refer to two different functions! -- either $q$ or 
 
 When we calculated $\pd{E}{v}$ for Equation 1, we really found $\pdc{E}{v}{h} = \pd{q}{v} = mv$.
 
-But when we calculated $\pd{E}{v}$ for Equation 4, we really found $\pdc{E}{v}{v_0, h_0} = \pd{s}{v} = 2mv$.
+But when we calculated $\pd{E}{v}$ for Equation 3, we really found $\pdc{E}{v}{v_0, h_0} = \pd{s}{v} = 2mv$.
 
 But if we were to follow the (very common) practice of assigning the function as the same variable, then **two very different functions get assigned the same name**: $E = E(v, h) = E(v, v_0, h_0)$! 
 
