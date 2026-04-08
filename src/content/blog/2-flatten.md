@@ -2,16 +2,16 @@
 title: 'Flattening Chaotic JSON'
 description: 'flattening JSON in polars'
 pubDate: 'Jul 29 2025'
-revDate: 'Apr 3 2026'
+revDate: 'Apr 7 2026'
 # heroImage: '../../assets/blog-placeholder-4.jpg'
 tags: ["polars", "data"]
 ---
 
-Sometimes, you will encounter truly chaotic JSON data -- nested data that does not follow any schema whatsoever, with so many deviations that creating a fully comprehensive schema is impossible. Examples include LLM output and user-generated data dumps.
+Sometimes, you encounter truly chaotic JSON data -- nested data that does not follow any schema whatsoever, with so many deviations that creating a fully comprehensive schema is impossible. Examples include LLM output and user-generated data dumps.
 
-How can this data be best stored? There's pickle, but it takes quite a long time for python to serialize/deserialize. Parquet does not support python dict (de-)serialization. Most often, JSON is encountered as strings, but then `json.loads(obj)` is needed every time the data is loaded, which is slow. 
+How to best store this data? There's pickle, but it takes quite a long time for python to serialize/deserialize. Parquet does not support python dict (de-)serialization. Most often, JSON is encountered as strings, but then the slow `json.loads(obj)` is needed every time data is loaded. 
 
-The trick? Transform data into `key` and `value` columns. By flattening, everything can be stored as native types.
+My suggestion is to transform data into `key` and `value` columns. By flattening, everything can be stored as native types.
 
 ## Why not pl.json_normalize()?
 
@@ -22,7 +22,7 @@ First, `json_normalize` requires the json to follow a consistent schema. This ma
 (At time of writing, `json_normalize` also has limited support for nested lists.)
 
 
-## The approach
+## The Approach
 
 As mentioned above: transform data into `key` and `value` columns, completely unnesting everything. Former nesting is described through prefixes in `key`.
 
@@ -75,9 +75,11 @@ Perhaps the approach is best described with an example.
 | inventory[1].ratings.reviews | 89                        |
 <br>
 
-### Wiktionary Example
+## Wiktionary Example
 
 In this real example, the input data comes from Tatu Ylönen's [wiktextract](https://github.com/tatuylonen/wiktextract), parsed from raw Wiktionary data.
+
+---
 
 <details>
 <summary>
@@ -122,11 +124,12 @@ After flattening:
 |          7 |                 1 | bor             | expansion | Latin averruncare       |
 
 </details>
-<br>
+
+---
 
 The data is taller but completely unnested.
 
-## The code
+## Code
 
 Note that this code converts everything to string. If you wish to retain the original data type, 
 you can create multiple columns: `value_str`, `value_float`, `value_int` etc. and assign

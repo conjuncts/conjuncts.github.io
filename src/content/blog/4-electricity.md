@@ -1,6 +1,6 @@
 ---
 title: 'Height/Width Analogy of Electricity'
-pubDate: 'Apr 3 2026'
+pubDate: 'Apr 7 2026'
 description: "Height/Width Analogy of Electricity"
 author: conjuncts
 tags: ["conceptual"]

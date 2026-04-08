@@ -1,6 +1,6 @@
 ---
-title: 'Proof of the Triple Product Rule'
-pubDate: 'Aug 10 2025'
+title: 'Proof of the Triple Product Rule (2/3)'
+pubDate: 'Apr 6 2026'
 revDate: 'Apr 3 2026'
 description: "Satisfying (to me) proofs of the Triple Product Rule and an unnamed 4-variable identity: two identities of 2D surfaces in 3D space"
 author: conjuncts
@@ -31,13 +31,15 @@ The typical proof of the 4-quantity identity also uses differentials -- and unco
 
 (TL;DR: see [here](https://math.stackexchange.com/a/3452693/1537176))
 
-Let $M$ be a $C^1$-differentiable 2D manifold (thermodynamic surface) in $(P, V, T) = \mathbb{R}^3$. Let some point $(p_0, v_0, t_0) = u \in M$ be given. 
+Let $M$ be a thermodynamic surface ($C^1$-differentiable manifold) in $W \subseteq (P, V, T) = \mathbb{R}^3$. Let some point $(p_0, v_0, t_0) = u \in M$ be given. 
 
-From the definition of a manifold, for some open neighborhood $W$ near $u$, $M$ may be described as the solutions of $F(P, V, T) = 0$, where $F: \mathbb{R}^3 \to \mathbb{R}$ is a differentiable function. (Think of $F$ as an arbitrary implicit relation, like $P^2T + TV + V^3 \ln P= 0$.)
+Let $M$ be described as the solutions to $F(P, V, T) = 0$, where $F: W \to \mathbb{R}$ is a differentiable function. (Think of $F$ as an arbitrary implicit relation, like $P^2T + TV + V^3 \ln P= 0$.)
+
+
 
 **Suppose, furthermore, that the gradient $\nabla F$ never has a zero component in $W$.** (In other words, we guarantee that partial derivatives never vanish.)
 
-From the Implicit Function Theorem, we obtain an open neighborhood $U$ for which (because of the nonvanishing condition) any variable can be described as the graph of any other 2 variables: that is, we obtain $C^1$ functions $f, g, h: \mathbb{R}^2 \to \mathbb{R}$ such that the point $(P, V, T)$ lies on the thermodynamic surface $M \cap U$ if and only if
+From the Implicit Function Theorem, we obtain an open neighborhood $U$ for which (because of the nonvanishing condition) any variable can be described as the graph of any other 2 variables: that is, we obtain differentiable functions $f, g, h: \mathbb{R}^2 \to \mathbb{R}$ such that the point $(P, V, T)$ lies on the thermodynamic surface $M \cap U$ if and only if
 
 $$
 P = f(V, T) \\

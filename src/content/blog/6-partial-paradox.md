@@ -1,10 +1,9 @@
 ---
-title: 'Partial Derivative Paradox'
-pubDate: 'Apr 4 2026'
-revDate: 'Apr 4 2026'
+title: 'Partial Derivative Paradox (3/3)'
+pubDate: 'Apr 7 2026'
+revDate: 'Apr 7 2026'
 description: "A short and sweet version"
 author: conjuncts
-heroImage: '../../assets/3-partial.svg'
 tags: ["math"]
 ---
 
@@ -14,9 +13,9 @@ $$
 $\def\dd#1#2{\frac{d#1}{d#2}}$
 $\def\pd#1#2{\frac{\partial #1}{\partial #2}}$
 
-*A short-and-sweet physics paradox involving simple kinematics, which illuminates a subtle but terrible ambiguity in partial derivative notation.*
+*A concise physics notational paradox involving simple kinematics.*
 
-Partial derivatives seem simple, but they have caused me much headache through a combination of [notational ambiguity](https://www.youtube.com/watch?v=mICbKwwHziI)  and [missing definitions](/blog/3-partial/). I devised a simple paradox to explain why partial derivatives are horribly ambiguous.
+Partial derivatives, despite their simplicity, have caused me much headache through a combination of [notational ambiguity](https://www.youtube.com/watch?v=mICbKwwHziI) and [missing definitions](/blog/3-partial/). I describe a simple paradox to explain why partial derivatives are horribly ambiguous.
 
 ## The Paradox
 
@@ -86,4 +85,4 @@ That is why $\pd{E}{v}$ alone is ambiguous. To be unambiguous, you have two opti
 
 In regards to parenthetical notation, I find it remarkable that the notation $\pdc{a}{b}{c}$ is almost never defined. It is rare for any textbook to discuss  the link between differentiating a variable (ie. $\pdc{E}{v}{h}$) and differentiating a function (ie. $\pd{q}{v}$). This often leads the reader to assume $\pdc{E}{v}{h}$ and $\pd{E}{v}$ are the same thing -- but that leads to terrible ambiguities as shown above.
 
-To prevent this confusion, I define the parenthetical partial derivative in [another post](/blog/3-partial).
+To address this, I define the parenthetical partial derivative in [another post](/blog/3-partial).

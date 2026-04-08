@@ -1,7 +1,7 @@
 ---
 title: 'Triangle Inequalit(ies)'
 pubDate: 'Aug 29 2024'
-revDate: 'Apr 3 2026'
+revDate: 'Aug 7 2026'
 description: "Triangle Inequality and its corollaries"
 author: conjuncts
 tags: ["math"]
@@ -27,6 +27,6 @@ I find the above helpful when performing mindless manipulation of inequalities. 
 
 ## Geometric
 
-It would be remiss to analyze the triangle inequality solely algebraically, so I made an visual proof with geogebra ([interactive!](https://www.geogebra.org/calculator/qjgd9xp2?embed)).
+It would be remiss of me to analyze the triangle inequality solely algebraically, so here's an [interactive](https://www.geogebra.org/calculator/qjgd9xp2?embed) visual proof with geogebra.
 
 ![geometric triangle inequality](../../assets/geom_triangle_ineq.png)

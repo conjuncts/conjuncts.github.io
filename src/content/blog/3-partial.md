@@ -1,7 +1,7 @@
 ---
-title: 'Notational Differences of Partial Derivatives In Thermodynamics'
+title: 'Bugs in Thermodynamic Partial Derivative Notation (1/3)'
 pubDate: 'Apr 3 2026'
-revDate: 'Apr 4 2026'
+revDate: 'Apr 7 2026'
 description: "A diatribe against how partial derivatives in thermodynamics are notated, why they can be immensely confusing for outsiders, and how you can decipher them"
 author: conjuncts
 heroImage: '../../assets/3-partial.svg'
@@ -13,13 +13,13 @@ $$
 $\def\dd#1#2{\frac{d#1}{d#2}}$
 $\def\pd#1#2{\frac{\partial #1}{\partial #2}}$
 
-*An observation of how partial derivatives in thermodynamics are notated, inherent notational ambiguities, and why it can be confusing.*
+*An observation of how partial derivatives in thermodynamics are notated, inherent notational ambiguities, and why they can be confusing.*
 
 # Introduction
 
-As a student in introductory thermodynamics, I noticed that thermodynamicists seem to use a completely different notation for partial derivatives. 
+As a student in introductory thermodynamics, I observed that thermodynamicists use a completely different notation for partial derivatives. 
 
-Instead of using the typical notation found in your math textbooks, which is to define function $f(x, y, z)$ to have the partial derivative $\pd{f}{x}$ which depends on the function $f$ and a variable $x$...
+Instead of the typical notation found in math textbooks, which is to define function $f(x, y, z)$ to have the partial derivative $\pd{f}{x}$ which depends on the function $f$ and a variable $x$...
 
 Thermodynamicists use parentheses, $\pdc{P}{T}{V}$, to indicate how the variable (not function) P varies over T, while explicitly notating $V$, the variables kept constant. One may ask: "isn't notating the constant variable redundant?" (Answer: yes *and* no!)
 
@@ -59,7 +59,7 @@ The two identities above are most commonly proved in textbooks with an informal 
 
 # Definition
 
-To help clear things up, let me offer a definition.
+To clear things up, let me offer a definition.
 
 Definition 1. Let there be a function $f: \mathbb{R}^n \to \mathbb{R}$, which without loss of generality is written:
 
@@ -184,13 +184,17 @@ Yet often the variable and function are given the same name, in which $\pd{P}{T}
 
 The next example comes not from thermodynamics, but from physics. Total energy is the familiar sum of gravitational potential and kinetic energy:
 
-$$E = mgh + \frac{1}{2}mv^2   \tag{1}$$
+$$
+E = mgh + \frac{1}{2}mv^2   \tag{1}
+$$
 
 Clearly, $\pd{E}{v} = mv$.
 
 Suppose, furthermore, that we have a free-falling object.
 
-$$h = \frac{1}{2} gt^2 + v_0 t + h_0 \tag{2}$$
+$$
+h = \frac{1}{2} gt^2 + v_0 t + h_0 \tag{2}
+$$
 
 By taking $v = \dd{h}{t} = gt + v_0$ and solving for $t$, we can derive the familiar velocity-displacement kinematic equation:
 
@@ -287,7 +291,7 @@ The proof of the triple product rule from is perhaps the most convincing evidenc
 
 Parenthetical partial derivative notation has its merits, especially when working with many dependent variables (as is common in physics/thermodynamics).
 
-But the **fundamental problem** is that the parenthetical partial derivative is rarely (if ever) *defined*. The assumption that the parenthetical partial derivative is the same creature as the simple mathematical partial derivative is a common one, yet misunderstandings lead to subtle yet extraordinary errors. 
+But the fundamental problem is that the parenthetical partial derivative is rarely (if ever) *defined*. The assumption that the parenthetical partial derivative is the same creature as the simple mathematical partial derivative is a common one, yet misunderstandings lead to subtle yet extraordinary errors. 
 
 It leads to apparent contradictions and confusions in interpretation (Pitfall 1), where the idea of "variable held constant" seems to be a subjective idea applied only under case-by-case circumstance.
 
