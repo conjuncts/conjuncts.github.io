@@ -1,7 +1,7 @@
 ---
 title: 'Proof of the Triple Product Rule (2/3)'
 pubDate: 'Apr 6 2026'
-revDate: 'Apr 3 2026'
+revDate: 'Sep 12 2026'
 description: "Satisfying (to me) proofs of the Triple Product Rule and an unnamed 4-variable identity: two identities of 2D surfaces in 3D space"
 author: conjuncts
 heroImage: '../../assets/3-partial.svg'
@@ -23,8 +23,6 @@ $$
 And it is normally "proved" using an informal argument involving differentials.
 
 That proof is unconvincing for many reasons, but one reason is: what happens if a partial derivatives is zero? We get the nonsensical identity $0 = -1$. Can we pinpoint the precise conditions needed for the identity to hold?
-
-The typical proof of the 4-quantity identity also uses differentials -- and unconvincingly, $\dd{P}{V}$ gets transformed to $\pdc{P}{V}{T}$ because "T is constant". Can we also amend that proof?
 
 ## Proof
 

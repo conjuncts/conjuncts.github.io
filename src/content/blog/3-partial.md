@@ -1,7 +1,7 @@
 ---
 title: 'Bugs in Thermodynamic Partial Derivative Notation (1/3)'
 pubDate: 'Apr 3 2026'
-revDate: 'Apr 7 2026'
+revDate: 'Jul 23 2026'
 description: "A diatribe against how partial derivatives in thermodynamics are notated, why they can be immensely confusing for outsiders, and how you can decipher them"
 author: conjuncts
 heroImage: '../../assets/3-partial.svg'
@@ -17,15 +17,15 @@ $\def\pd#1#2{\frac{\partial #1}{\partial #2}}$
 
 # Introduction
 
-As a student in introductory thermodynamics, I observed that thermodynamicists use a completely different notation for partial derivatives. 
+As a thermodynamics student, I observed that thermodynamicists use a completely different notation for partial derivatives. 
 
-Instead of the typical notation found in math textbooks, which is to define function $f(x, y, z)$ to have the partial derivative $\pd{f}{x}$ which depends on the function $f$ and a variable $x$...
+Instead of the typical notation found in math textbooks, which is to define function $f(x, y, z)$ to have the partial derivative $\pd{f}{x}$ which depends on the function $f$ and a variable $x$,
 
 Thermodynamicists use parentheses, $\pdc{P}{T}{V}$, to indicate how the variable (not function) P varies over T, while explicitly notating $V$, the variables kept constant. One may ask: "isn't notating the constant variable redundant?" (Answer: yes *and* no!)
 
-This notational difference is almost never discussed. You will be hard pressed to find a definition of the parenthetical partial derivative (ie. $\pdc{P}{T}{V}$) in either a math textbook *or* a thermodynamics textbook. The assumption that the definition is the same as the typical partial derivative, $\pd{f}{x}$, is a common and implicit one, yet *very* incorrect. 
+This notational difference is almost never discussed. You will be hard pressed to find a definition of the parenthetical partial derivative (ie. $\pdc{P}{T}{V}$) in either a math textbook *or* a thermodynamics textbook. The assumption that the definition is the same as the typical partial derivative, $\pd{f}{x}$, is a common and implicit one, yet **incorrect**. 
 
-Notational subtleties (and subsequent misunderstandings) lead to traps and apparent contradictions. The heuristic argument of keeping certain variables constant is often applied inconsistently in proofs, leading to confusion for students in want of rigor. The confusion can be cleared up with a clear definition of the parenthetical partial derivative, something often painfully missing in many texts.
+Notational subtleties (and subsequent misunderstandings) lead to traps and apparent contradictions. The heuristic argument of keeping certain variables constant is often applied inconsistently in proofs, leading to confusion for students in want of rigor. The confusion can be cleared up with a clear definition of the parenthetical partial derivative, something painfully missing in many texts.
 
 ## Pitfall 1 (P1)
 
@@ -35,7 +35,7 @@ $$
 \Delta S(T, V_2) - \Delta S(T, V_1) = \int_{V_1}^{V_2} \pdc{P}{T}{V} dV
 $$
 
-*What does it mean* to integrate with respect to V, while keeping V constant‽
+What does it mean to integrate with respect to V, while keeping V constant‽
 
 ## Pitfall 2 (P2)
 
@@ -45,7 +45,7 @@ For instance, imagine $\pdc{P}{T}{V}$. It is entirely possible for temperature t
 
 ## Pitfall 3 (P3)
 
-Throughout calculus, one is ingrained with the idea that treating the derivative as a fraction of differentials is unrigorous and hazardous. Yet proofs involving manipulation of differentials are baked into introductory thermodynamics. For example, take the [triple product rule](https://en.wikipedia.org/wiki/Triple_product_rule) and an unnamed 4-quantity identity:
+It is commonly said that treating the derivative as a fraction of differentials is unrigorous. Yet proofs involving manipulation of differentials are embedded into introductory thermodynamics. For example, take the [triple product rule](https://en.wikipedia.org/wiki/Triple_product_rule) and an unnamed 4-quantity identity:
 
 $$
 \pdc{P}{T}{V} \pdc{T}{V}{P} \pdc{V}{P}{T} = -1
@@ -58,8 +58,6 @@ $$
 The two identities above are most commonly proved in textbooks with an informal differential argument, sometimes involving ad-hoc replacement of $dV$ with $\partial V$. A differential argument is, as of 2026, listed as the first proof of the triple product rule on Wikipedia. For this reason, introductory proofs of even fundamental identities can be unconvincing.
 
 # Definition
-
-To clear things up, let me offer a definition.
 
 Definition 1. Let there be a function $f: \mathbb{R}^n \to \mathbb{R}$, which without loss of generality is written:
 
@@ -104,6 +102,10 @@ Caveat. At times, it is not possible to construct a global function $f$ due to n
 Why create a separate function $f$? Can't we let $P$ refer to both the variable and the function?
 
 The short answer: because $P$ can be described by **different functions** depending your choice of dependent variables, making $\pd{P}{V}$ **fatally ambiguous**.
+
+
+> Edit (2026/07/23): I'm now aware that Pitfall 4 has a name: "precomposition". [Wikipedia](https://en.wikipedia.org/wiki/Pullback#Precomposition) carries the following note: "It is such a fundamental process that it is often passed over without mention."
+
 
 Assume:
 - P in terms of T and V (Eqn. 1)
@@ -265,7 +267,7 @@ $$
 \int_{V_1}^{V_2} \pdc{P}{T}{V} dV
 $$
 
-Definition 1 provides a newfound perspective. Instead of worrying about which variables we change and hold constant, we look past all of that and examine the underlying function $f$ itself.
+Definition 1 provides a new perspective. Instead of worrying about which variables we change and hold constant, we look past it all and examine the underlying function $f$ itself.
 
 We now know $P = f(T, V)$. Hence, we just want:
 
@@ -273,7 +275,7 @@ $$
 \int_{V_1}^{V_2} \pd{f}{T} \mathrm{d} V
 $$
 
-Since $\pd{f}{T} (T, V)$ is a function just like any other, of course it can be integrated.
+Since $\pd{f}{T} (T, V)$ is a function just like any other, clearly it can be integrated.
 
 ## Revisiting P2
 
@@ -283,23 +285,22 @@ Everything is still well-defined, since we know that $\pdc{P}{T}{V} = \pd{f}{T}$
 
 ## Revisiting P3
 
-By connecting $\pdc{P}{T}{V}$ to the function $P = f(T, V)$, students can start to bridge thermodynamic identities with the theorems introduced in multivariable calculus. 
+By connecting $\pdc{P}{T}{V}$ to the function $P = f(T, V)$, students can prove thermodynamic identities with the theorems introduced in multivariable calculus. 
 
-The proof of the triple product rule from is perhaps the most convincing evidence that Definition 1 is both valid and useful. However, this article is already long, so a proof of the triple product rule and 4-quantity identity is left to [another article](/blog/5-triple/).
+As an exercise, I prove the [triple product rule and a similar 4-term identity](/blog/5-triple/) in another article.
+
 
 # Conclusion
 
 Parenthetical partial derivative notation has its merits, especially when working with many dependent variables (as is common in physics/thermodynamics).
 
-But the fundamental problem is that the parenthetical partial derivative is rarely (if ever) *defined*. The assumption that the parenthetical partial derivative is the same creature as the simple mathematical partial derivative is a common one, yet misunderstandings lead to subtle yet extraordinary errors. 
+But the fundamental problem is that the parenthetical partial derivative is **rarely (if ever) defined**. The assumption that the parenthetical partial derivative is the same creature as the simple mathematical partial derivative is a common one, yet misunderstandings lead to subtle errors. 
 
-It leads to apparent contradictions and confusions in interpretation (Pitfall 1), where the idea of "variable held constant" seems to be a subjective idea applied only under case-by-case circumstance.
-
-It often **obscures the *actual function*** for which the partial derivative is being taken. Worse, the distinction between the *variable* and the *function* is rarely, if ever made. The two are often (almost always!) assigned the same name, but this can lead to great ambiguity and completely different partial derivatives, as discussed in Pitfall 4.
+It leads to apparent contradictions in interpretation (Pitfall 1), where the idea of "variable held constant" seems to be a subjective idea applied only under case-by-case circumstance. It obscures the actual function for which the partial derivative is being taken. The distinction between *variable* and *function* is rarely made, with the two almost always assigned the same name, but this can lead to ambiguity and completely different partial derivatives (Pitfall 4).
 
 The confusion can be resolved with a clear definition of the parenthetical partial derivative.
 
-So I find it tragic that the definition and its subtleties are almost never discussed, and particularly rarely in introductory textbooks -- which address precisely the audience most likely to be confused with these subtleties of notation.
+So I find it tragic that the definition and its subtleties are almost never discussed, and particularly rarely in introductory textbooks.
 
 
 ## Further Reading
@@ -311,10 +312,8 @@ Ambiguity with function composition and partial derivatives has been excellently
 - YT (EpsilonDelta) -- [Ambiguity With Partial ∂ Notation, and How to Resolve It](https://www.youtube.com/watch?v=mICbKwwHziI)
 - YT (EpsilonDelta) -- [They Use ∂ Differently in Math and Physics. Which is Better?](https://www.youtube.com/watch?v=QFHSHhpbo00)
 
-Textbooks for learning thermo:
-- Korestky, Milo D. -- [Engineering and Chemical Thermodynamics, 2ed](https://www.amazon.com/Engineering-Chemical-Thermodynamics-Milo-Koretsky/dp/0470259612), in my opinion a great introductory textbook
-- Levine, Ira N. -- [Physical Chemistry, 6ed](https://archive.org/details/PhysicalChemistry6eByIraN.Levine), less recommended
-
+Thermodynamics textbooks:
+- Korestky, Milo D. -- [Engineering and Chemical Thermodynamics, 2ed](https://www.amazon.com/Engineering-Chemical-Thermodynamics-Milo-Koretsky/dp/0470259612), a great introductory textbook
 
 Discussion about formalisms:
 - Physics SE -- [Contact Geometry?](https://physics.stackexchange.com/questions/388318/how-exactly-is-the-formalism-of-thermodynamics-based-on-contact-geometry)

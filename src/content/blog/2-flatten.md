@@ -1,21 +1,25 @@
 ---
 title: 'Flattening Chaotic JSON'
-description: 'flattening JSON in polars'
+description: 'flattening JSON'
 pubDate: 'Jul 29 2025'
-revDate: 'Apr 7 2026'
+revDate: 'Sep 12 2026'
 # heroImage: '../../assets/blog-placeholder-4.jpg'
 tags: ["polars", "data"]
 ---
 
-Sometimes, you encounter truly chaotic JSON data -- nested data that does not follow any schema whatsoever, with so many deviations that creating a fully comprehensive schema is impossible. Examples include LLM output and user-generated data dumps.
+EDIT(2026/09/12): I was recently delighted to hear about DuckDB's [variant](https://duckdb.org/docs/current/sql/data_types/variant) data-type, released Mar 9 2026, which addresses exactly this issue. It "shreds" unstructured JSON so that it can be efficiently stored.
 
-How to best store this data? There's pickle, but it takes quite a long time for python to serialize/deserialize. Parquet does not support python dict (de-)serialization. Most often, JSON is encountered as strings, but then the slow `json.loads(obj)` is needed every time data is loaded. 
+--- 
+
+Sometimes, you'll get truly chaotic JSON data. Nested data with so many rule exceptions that a fully comprehensive schema is impossible. Examples include LLM output and user-generated data dumps.
+
+How does one best store this data? We can dump to .jsonl, but then it sits uncompressed. There's pickle, but that's unsafe/unsharable and takes quite long to serialize/deserialize. Parquet does not support python dict (de-)serialization. If stored as string, the JSON needs to be re-parsed every time.
 
 My suggestion is to transform data into `key` and `value` columns. By flattening, everything can be stored as native types.
 
 ## Why not pl.json_normalize()?
 
-Polars provides [json_normalize](https://docs.pola.rs/api/python/stable/reference/api/polars.json_normalize.html), which is quite similar. Why not use that?
+Polars provides [json_normalize](https://docs.pola.rs/api/python/stable/reference/api/polars.json_normalize.html), which is quite similar. What's the difference?
 
 First, `json_normalize` requires the json to follow a consistent schema. This may not be the case when working with chaotic JSON data. Hence, a gigantic `infer_schema_length` is required to capture all variations in the schema. The more variations there are, the more columns are necessary; >1000 columns brought polars to a crawl. With most columns almost entirely empty, this is clearly not the right approach.
 
